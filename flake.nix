@@ -9,6 +9,7 @@
     devshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = {...} @ inputs:
@@ -91,7 +92,7 @@
                 cp -r * $out
 
                 cat << EOF > $out/bin/ags
-                ags -c $out/config.js
+                ${inputs.ags.packages.${pkgs.system}.ags}/bin/ags -c $out/config.js
                 EOF
                 chmod +x $out/bin/ags
               '';
