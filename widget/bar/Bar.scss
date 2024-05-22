@@ -1,8 +1,16 @@
-.bar {
-  min-width: $bar-size;
+.bar-wrapper {
+  // min-width: $bar-size;
   background-color: rgba($bg, 0.9);
+}
+
+.bar-box {
+  min-width: $bar-size;
 }
 
 .bar-item {
   color: $fg;
+}
+
+.time {
+  font-size: 1.5em;
 }
