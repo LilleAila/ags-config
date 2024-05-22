@@ -52,6 +52,7 @@
               bash
               */
               with inputs.nix-colors.colorSchemes.gruvbox-dark-medium.palette; ''
+                mkdir -p style
                 cat << EOF > ./style/cols.scss
                 \$base00: #${base00};
                 \$base01: #${base01};

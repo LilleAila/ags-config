@@ -1,23 +1,29 @@
-const start = [];
+import Time from "./items/time";
+
+// TODO: define these things in separate file?
+const start = [Time()];
+const center = [];
+const end = [];
 
 export default (monitor: number) =>
   Widget.Window({
     monitor,
     class_name: "bar",
     name: `bar${monitor}`,
-    anchor: ["top", "right", "left"],
+    exclusivity: "exclusive",
+    anchor: ["top", "bottom", "right"],
     child: Widget.CenterBox({
       startWidget: Widget.Box({
         hexpand: true,
-        children: [],
+        children: start,
       }),
       centerWidget: Widget.Box({
         hpack: "center",
-        children: [],
+        children: center,
       }),
       endWidget: Widget.Box({
         hexpand: true,
-        children: [],
+        children: end,
       }),
     }),
   });

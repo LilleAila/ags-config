@@ -1,1 +1,8 @@
 @import "style/cols";
+@import "style/vars";
+
+* {
+  all: unset;
+}
+
+@import "widget/bar/Bar";
