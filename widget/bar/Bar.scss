@@ -1,14 +1,17 @@
 .bar-wrapper {
-  min-width: $bar-size;
+  // min-width: $bar-size;
   background-color: rgba($bg, 0.9);
+  border: 1px solid $base0B;
 }
 
 .bar-box {
   min-width: $bar-size;
+  border: 1px solid $base0D;
 }
 
 .bar-item {
   color: $fg;
+  border: 1px solid $base08;
 }
 
 .time {
