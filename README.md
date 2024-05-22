@@ -1,15 +1,7 @@
+# My config for Aylur's GTK Shell
 
-# Starter Config
+Test it on NixOS with:
 
-if suggestions don't work, first make sure
-you have TypeScript LSP working in your editor
-
-if you do not want typechecking only suggestions
-
-```json
-// tsconfig.json
-"checkJs": false
+```bash
+nix run github:LilleAila/ags-config
 ```
-
-types are symlinked to:
-/home/olai/.local/share/com.github.Aylur.ags/types
