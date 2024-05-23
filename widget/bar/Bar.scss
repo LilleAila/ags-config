@@ -1,3 +1,4 @@
+// Bar stuff
 .bar-wrapper {
   background-color: rgba($bg, 0.5);
 }
@@ -33,10 +34,12 @@
   @include bar-item;
 }
 
+// Time / date
 .time {
   font-size: 1.2em;
 }
 
+// Workspaces
 .workspaces {
   .workspace {
     min-width: 0.6em;
@@ -56,6 +59,7 @@
   }
 }
 
+// Systray
 .tray {
   .tray-item {
     min-width: 1.4em;
@@ -92,11 +96,24 @@ menu {
   menuitem {
     border-radius: 0;
     transition: background-color 100ms linear;
-    padding: 0.4em 0.7rem;
+    padding: 0.4em 0.7em;
     border-radius: 0.5em;
 
     &:hover {
       background-color: $bg2;
     }
+  }
+}
+
+// Tooltips
+tooltip {
+  background-color: rgba($bg, 0.8);
+  border-radius: 0.4em;
+  border: 0.1em solid $base0C;
+  margin: 0.4em;
+  color: $fg;
+
+  & * {
+    padding: 0.2em;
   }
 }
