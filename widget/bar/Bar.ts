@@ -1,9 +1,18 @@
 import Time from "./items/time";
+import Workspaces from "./items/workspaces";
 
 // TODO: define these things in separate file?
-const start = [Time()];
-const center = [Time()];
-const end = [Time()];
+const start = [
+  //
+];
+const center = [
+  //
+  Workspaces(),
+];
+const end = [
+  //
+  Time(),
+];
 
 export default (monitor: number) =>
   Widget.Window({

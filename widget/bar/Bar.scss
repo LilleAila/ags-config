@@ -1,6 +1,6 @@
 .bar-box {
   min-width: $bar-size;
-  background-color: $bg2;
+  background-color: $bg;
   padding: 8px 0;
 
   &.bar-start {
@@ -26,5 +26,24 @@
 }
 
 .time {
-  font-size: 1.2em;
+  font-size: 1.3em;
+}
+
+.workspaces {
+  .workspace {
+    min-width: 0.6em;
+    min-height: 1.2em;
+    margin: 4px;
+    border-radius: 4px;
+    background-color: $bg2;
+    transition: min-height 0.1s linear;
+
+    &.occupied {
+      background-color: $base0A;
+    }
+
+    &.active {
+      min-height: 2.4em;
+    }
+  }
 }
