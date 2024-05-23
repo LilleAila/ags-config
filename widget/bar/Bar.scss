@@ -1,19 +1,26 @@
-.bar-wrapper {
-  // min-width: $bar-size;
-  background-color: rgba($bg, 0.9);
-  // border: 1px solid $base0B;
-}
-
 .bar-box {
   min-width: $bar-size;
-  border: 1px solid $base0D;
+  background-color: $bg2;
+  padding: 8px 0;
+
+  &.bar-start {
+    border-bottom-right-radius: 8px;
+  }
+
+  &.bar-center {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  &.bar-end {
+    border-top-right-radius: 8px;
+  }
 }
 
 .bar-item {
   color: $fg;
-  border: 1px solid $base08;
 }
 
 .time {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }

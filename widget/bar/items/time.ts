@@ -6,4 +6,6 @@ export default () =>
   Widget.Label({
     class_name: "bar-item time",
     label: date.bind(),
+    //hpack: "center",
+    hexpand: true,
   });
