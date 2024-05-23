@@ -92,7 +92,7 @@
                 cp -r * $out
 
                 cat << EOF > $out/bin/ags
-                ${inputs.ags.packages.${pkgs.system}.ags}/bin/ags -c $out/config.js
+                ${inputs.ags.packages.${pkgs.system}.ags}/bin/ags -b test -c $out/config.js
                 EOF
                 chmod +x $out/bin/ags
               '';

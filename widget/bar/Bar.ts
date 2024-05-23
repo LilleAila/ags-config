@@ -14,6 +14,7 @@ export default (monitor: number) =>
     exclusivity: "exclusive",
     child: Widget.CenterBox({
       css: "min-width: 2px; min-height: 2px;",
+      vertical: true,
       class_name: "bar-wrapper",
       startWidget: Widget.Box({
         class_name: "bar-box bar-start",
@@ -22,19 +23,19 @@ export default (monitor: number) =>
         hexpand: false,
         children: start,
       }),
-      //centerWidget: Widget.Box({
-      //  class_name: "bar-box bar-center",
-      //  vpack: "center",
-      //  hpack: "center",
-      //  hexpand: false,
-      //  children: center,
-      //}),
-      //endWidget: Widget.Box({
-      //  class_name: "bar-box bar-end",
-      //  vpack: "end",
-      //  hpack: "center",
-      //  hexpand: false,
-      //  children: end,
-      //}),
+      centerWidget: Widget.Box({
+        class_name: "bar-box bar-center",
+        vpack: "center",
+        hpack: "center",
+        hexpand: false,
+        children: center,
+      }),
+      endWidget: Widget.Box({
+        class_name: "bar-box bar-end",
+        vpack: "end",
+        hpack: "center",
+        hexpand: false,
+        children: end,
+      }),
     }),
   });
