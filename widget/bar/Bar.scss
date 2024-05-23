@@ -19,6 +19,10 @@
 
 .bar-item {
   color: $fg;
+
+  &:not(:first-child):not(:last-child) {
+    margin: 8px 4px;
+  }
 }
 
 .time {
