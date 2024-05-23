@@ -1,9 +1,11 @@
 import Time from "./items/time";
 import Workspaces from "./items/workspaces";
+import Tray from "./items/tray";
 
 // TODO: define these things in separate file?
 const start = [
   //
+  Tray(),
 ];
 const center = [
   //

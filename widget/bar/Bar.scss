@@ -1,3 +1,7 @@
+.bar-wrapper {
+  background-color: rgba($bg, 0.5);
+}
+
 .bar-box {
   min-width: $bar-size;
   background-color: $bg;
@@ -17,7 +21,7 @@
   }
 }
 
-.bar-item {
+@mixin bar-item {
   color: $fg;
 
   &:not(:first-child):not(:last-child) {
@@ -25,8 +29,12 @@
   }
 }
 
+.bar-item {
+  @include bar-item;
+}
+
 .time {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .workspaces {
@@ -44,6 +52,51 @@
 
     &.active {
       min-height: 2.4em;
+    }
+  }
+}
+
+.tray {
+  .tray-item {
+    min-width: 1.4em;
+    min-height: 1.4em;
+    border-radius: 8px;
+    background-color: transparent;
+    color: $fg;
+    transition: background-color 0.1s linear;
+    padding: 0.25em;
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background-color: $bg2;
+    }
+  }
+}
+
+menu {
+  background-color: rgba($bg, 0.9);
+  padding: 0.5em;
+  border-radius: 8px;
+  color: $fg;
+
+  separator {
+    min-height: 0.05em;
+    margin: 0.5em 0.5em;
+    background-color: rgba($fg, 0.8);
+  }
+
+  menuitem {
+    border-radius: 0;
+    transition: background-color 100ms linear;
+    padding: 0.4em 0.7rem;
+    border-radius: 0.5em;
+
+    &:hover {
+      background-color: $bg2;
     }
   }
 }
