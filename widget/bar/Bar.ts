@@ -1,10 +1,12 @@
 import Time from "./items/time";
 import Workspaces from "./items/workspaces";
 import Tray from "./items/tray";
+import Idle from "./items/idle";
 
 // TODO: define these things in separate file?
 const start = [
   //
+  Idle(),
   Tray(),
 ];
 const center = [
@@ -32,6 +34,7 @@ export default (monitor: number) =>
         vpack: "start",
         hpack: "center",
         hexpand: false,
+        vertical: true,
         children: start,
       }),
       centerWidget: Widget.Box({
@@ -39,6 +42,7 @@ export default (monitor: number) =>
         vpack: "center",
         hpack: "center",
         hexpand: false,
+        vertical: true,
         children: center,
       }),
       endWidget: Widget.Box({
@@ -46,6 +50,7 @@ export default (monitor: number) =>
         vpack: "end",
         hpack: "center",
         hexpand: false,
+        vertical: true,
         children: end,
       }),
     }),

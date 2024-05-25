@@ -59,24 +59,34 @@
   }
 }
 
-// Systray
+// Systray and idle inhibit
+@mixin tray-item {
+  min-width: 1.4em;
+  min-height: 1.4em;
+  border-radius: 8px;
+  background-color: transparent;
+  color: $fg;
+  transition: background-color 0.1s linear;
+  margin-bottom: 4px;
+
+  &:hover {
+    background-color: $bg2;
+  }
+}
+
+.idle-button {
+  @include tray-item;
+  // top/right/bottom/left
+  padding: 0.25em 0.05em 0.25em 0.45em;
+}
+
 .tray {
   .tray-item {
-    min-width: 1.4em;
-    min-height: 1.4em;
-    border-radius: 8px;
-    background-color: transparent;
-    color: $fg;
-    transition: background-color 0.1s linear;
+    @include tray-item;
     padding: 0.25em;
-    margin-bottom: 4px;
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    &:hover {
-      background-color: $bg2;
     }
   }
 }
