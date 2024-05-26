@@ -1,8 +1,10 @@
-import GLib from "gi://GLib?version=2.0";
 const audio = await Service.import("audio");
 
-export default () => {
-  const revealer = Widget.Revealer({
+// Either "speaker" and "volume" or "microphone" and "input-microphone"
+export default (microphone: boolean = false) => {
+  const type = microphone ? "microphone" : "speaker";
+  const icon_name = microphone ? "input-microphone" : "volume";
+  return Widget.Revealer({
     transition: "slide_up",
     transitionDuration: 250,
     reveal_child: false,
@@ -16,14 +18,12 @@ export default () => {
         class_name: "indicator-progress",
         hexpand: true,
         start_at: 0.75,
-        value: audio["speaker"].bind("volume"),
+        value: audio[type].bind("volume"),
         //rounded: true,
         child: Widget.Icon({
           class_name: "indicator-icon",
-        }).hook(audio.speaker, (self) => {
-          const vol = audio.speaker["is-muted"]
-            ? 0
-            : audio.speaker.volume * 100;
+        }).hook(audio[type], (self) => {
+          const vol = audio[type]["is-muted"] ? 0 : audio[type].volume * 100;
           const icon = (
             [
               [101, "overamplified"],
@@ -34,10 +34,10 @@ export default () => {
             ] as Array<[number, string]>
           ).find(([threshold]) => threshold <= vol)?.[1];
 
-          self.icon = `audio-volume-${icon}-symbolic`;
+          self.icon = `audio-${icon_name}-${icon}-symbolic`;
         }),
-      }).hook(audio.speaker, (self) => {
-        self.toggleClassName("muted", audio.speaker["is-muted"]);
+      }).hook(audio[type], (self) => {
+        self.toggleClassName("muted", audio[type]["is-muted"]);
       }),
     }),
   }).hook(
@@ -45,12 +45,15 @@ export default () => {
     (() => {
       // These variables are global
       let counter = 0;
-      let volume = audio.speaker.volume;
+      let volume = audio[type].volume;
+      let muted = audio[type].is_muted;
       let first_run = true; // This runs before volume is initialized.
       // That means that the volume variable will always be 0 in the first run of the functoin
       return (self) => {
-        if (audio.speaker.volume == volume) return;
-        volume = audio.speaker.volume;
+        if (audio[type].volume == volume && audio[type].is_muted == muted)
+          return;
+        volume = audio[type].volume;
+        muted = audio[type].is_muted;
         if (first_run) return (first_run = false);
         counter++;
         self.reveal_child = true;
@@ -60,7 +63,6 @@ export default () => {
         });
       };
     })(),
-    "speaker-changed",
+    `${type}-changed`,
   );
-  return revealer;
 };
