@@ -3,6 +3,8 @@
 
 * {
   all: unset;
+  color: $fg;
 }
 
 @import "widget/bar/Bar";
+@import "widget/osd/OSD";

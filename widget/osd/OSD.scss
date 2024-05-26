@@ -1,0 +1,16 @@
+.indicator {
+  min-width: 72px;
+  min-height: 72px;
+  padding: 12px;
+  background-color: $bg2;
+  border-radius: 8px;
+  font-size: 8px;
+
+  .indicator-progress.muted {
+    color: $fg-inactive;
+  }
+
+  .indicator-icon {
+    font-size: 28px;
+  }
+}
