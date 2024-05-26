@@ -1,7 +1,8 @@
+import GLib from "gi://GLib?version=2.0";
 const audio = await Service.import("audio");
 
-export default () =>
-  Widget.Revealer({
+export default () => {
+  const revealer = Widget.Revealer({
     transition: "slide_up",
     transitionDuration: 250,
     reveal_child: false,
@@ -39,4 +40,27 @@ export default () =>
         self.toggleClassName("muted", audio.speaker["is-muted"]);
       }),
     }),
-  });
+  }).hook(
+    audio,
+    (() => {
+      // These variables are global
+      let counter = 0;
+      let volume = audio.speaker.volume;
+      let first_run = true; // This runs before volume is initialized.
+      // That means that the volume variable will always be 0 in the first run of the functoin
+      return (self) => {
+        if (audio.speaker.volume == volume) return;
+        volume = audio.speaker.volume;
+        if (first_run) return (first_run = false);
+        counter++;
+        self.reveal_child = true;
+        Utils.timeout(2000, () => {
+          // so that only the last timeout actually does something
+          if (--counter === 0) self.reveal_child = false;
+        });
+      };
+    })(),
+    "speaker-changed",
+  );
+  return revealer;
+};

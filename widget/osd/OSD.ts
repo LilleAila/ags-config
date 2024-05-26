@@ -8,7 +8,6 @@ export default (monitor: number) =>
     layer: "overlay",
     click_through: true,
     anchor: ["top", "right", "bottom", "left"],
-    margins: [48, 48, 48, 48],
     child: Widget.Box({
       vertical: true,
       vpack: "end",
