@@ -9,17 +9,12 @@ export default (microphone: boolean = false) => {
     transitionDuration: 250,
     reveal_child: false,
     child: Widget.Box({
-      hexpand: true,
-      vexpand: false,
-      hpack: "center",
-      vpack: "center",
       class_name: "indicator volume",
       child: Widget.CircularProgress({
         class_name: "indicator-progress",
         hexpand: true,
         start_at: 0.75,
         value: audio[type].bind("volume"),
-        //rounded: true,
         child: Widget.Icon({
           class_name: "indicator-icon",
         }).hook(audio[type], (self) => {

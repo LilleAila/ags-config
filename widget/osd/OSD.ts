@@ -1,4 +1,5 @@
 import Volume from "./Volume.ts";
+import Brightness from "./Brightness.ts";
 
 export default (monitor: number) =>
   Widget.Window({
@@ -19,6 +20,7 @@ export default (monitor: number) =>
         Volume(),
         // Microphone
         Volume(true),
+        Brightness(),
       ],
     }),
   });
