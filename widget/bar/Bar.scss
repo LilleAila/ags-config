@@ -37,6 +37,8 @@
 // Time / date
 .time {
   font-size: 1.2em;
+  // This is at the bottom
+  margin-top: 8px;
 }
 
 // Workspaces
@@ -125,5 +127,26 @@ tooltip {
 
   & * {
     padding: 0.2em;
+  }
+}
+
+// Battery
+.battery-progress {
+  min-width: $bar-size;
+  min-height: $bar-size;
+  font-size: 5px;
+  background-color: $bg2;
+
+  &.charging,
+  &:not(.critical):not(.warning) {
+    color: $base0B;
+  }
+
+  &.warning:not(.critical) {
+    color: $base09;
+  }
+
+  &.critical {
+    color: $base08;
   }
 }

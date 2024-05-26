@@ -2,6 +2,7 @@ import Time from "./items/time";
 import Workspaces from "./items/workspaces";
 import Tray from "./items/tray";
 import Idle from "./items/idle";
+import Battery from "./items/battery";
 
 // TODO: define these things in separate file?
 const start = [
@@ -15,6 +16,7 @@ const center = [
 ];
 const end = [
   //
+  Battery(),
   Time(),
 ];
 
