@@ -13,8 +13,12 @@ export default (monitor: number) =>
       vpack: "end",
       hpack: "center",
       children: [
+        // When both show, they will be above each other
+        // It's not a bug, it's a feature!
         // Volume
         Volume(),
+        // Microphone
+        Volume(true),
       ],
     }),
   });
