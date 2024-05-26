@@ -1,5 +1,6 @@
 import Bar from "widget/bar/Bar";
 import OSD from "widget/osd/OSD";
+import PowerMenu from "widget/powermenu/PowerMenu";
 import { forMonitors } from "lib/utils";
 
 App.config({
@@ -7,6 +8,7 @@ App.config({
   windows: [
     ...forMonitors(Bar),
     ...forMonitors(OSD),
+    PowerMenu(),
     //
   ],
 });

@@ -82,6 +82,11 @@
   padding: 0.25em 0.05em 0.25em 0.45em;
 }
 
+.powermenu-button {
+  @include tray-item;
+  padding: 0.25em;
+}
+
 .tray {
   .tray-item {
     @include tray-item;

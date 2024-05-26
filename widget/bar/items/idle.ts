@@ -11,7 +11,7 @@ const toggle = () => {
 
 export default () =>
   Widget.Box({
-    class_name: "idle-inhibit bar-item",
+    class_name: "idle-inhibit",
     vpack: "center",
     hexpand: true,
     tooltip_text: tooltip.bind(),
