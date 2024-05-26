@@ -17,11 +17,11 @@ const reboot = () => Utils.exec("systemctl reboot");
 const logout = () => Utils.exec("hyprctl dispatch exit");
 
 const buttons = [
-  Button("lock-symbolic", lock, "Lock (l)"),
-  Button("system-suspend-symbolic", suspend, "Suspend (s)"),
-  Button("system-shutdown-symbolic", poweroff, "Power off (p)"),
-  Button("system-reboot-symbolic", reboot, "Reboot (r)"),
-  Button("application-exit-symbolic", logout, "Log out (e)"),
+  Button("lock-symbolic", lock, "Lock"),
+  Button("system-suspend-symbolic", suspend, "Suspend"),
+  Button("system-shutdown-symbolic", poweroff, "Power off"),
+  Button("system-reboot-symbolic", reboot, "Reboot"),
+  Button("application-exit-symbolic", logout, "Log out"),
 ];
 
 export default () =>
