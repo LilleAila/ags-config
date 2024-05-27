@@ -27,7 +27,7 @@ export default (monitor: number) => {
     name: `bar${monitor}`,
     anchor: ["top", "left", "bottom"],
     exclusivity: "exclusive",
-    layer: "overlay",
+    layer: "top", // so it gets hidden in fullscreen
     child: Widget.CenterBox({
       css: "min-width: 2px; min-height: 2px;",
       vertical: true,
