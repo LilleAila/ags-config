@@ -8,7 +8,7 @@ App.config({
   windows: [
     ...forMonitors(Bar),
     ...forMonitors(OSD),
-    PowerMenu(),
+    ...forMonitors(PowerMenu),
     //
   ],
 });

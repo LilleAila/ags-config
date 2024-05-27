@@ -5,25 +5,23 @@ import Idle from "./items/idle";
 import Battery from "./items/battery";
 import Power from "./items/power.ts";
 
-// TODO: define these things in separate file?
-const start = [
-  //
-  Power(),
-  Idle(),
-  Tray(),
-];
-const center = [
-  //
-  Workspaces(),
-];
-const end = [
-  //
-  Battery(),
-  Time(),
-];
-
-export default (monitor: number) =>
-  Widget.Window({
+export default (monitor: number) => {
+  const start = [
+    //
+    Power(monitor),
+    Idle(),
+    Tray(),
+  ];
+  const center = [
+    //
+    Workspaces(),
+  ];
+  const end = [
+    //
+    Battery(),
+    Time(),
+  ];
+  return Widget.Window({
     monitor: monitor,
     class_name: "bar",
     name: `bar${monitor}`,
@@ -60,3 +58,4 @@ export default (monitor: number) =>
       }),
     }),
   });
+};

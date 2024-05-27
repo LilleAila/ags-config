@@ -4,7 +4,7 @@ export default (monitor: number = 0) =>
   Widget.Window({
     monitor: monitor,
     class_name: "powermenu",
-    name: `powermenu`,
+    name: `powermenu${monitor}`,
     anchor: ["top", "left"],
     layer: "top",
     visible: false,
