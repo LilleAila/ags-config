@@ -2,6 +2,8 @@ import Gdk from "gi://Gdk";
 import Idle from "./idle";
 const systemtray = await Service.import("systemtray");
 
+globalThis.systray_visible = Variable(false);
+
 const SysTrayItem = (item) =>
   Widget.Button({
     class_name: "tray-item",
@@ -43,7 +45,7 @@ export default () => {
   const revealer = Widget.Revealer({
     transition: "slide_down",
     transitionDuration: 250,
-    reveal_child: false,
+    reveal_child: globalThis.systray_visible.bind(),
     child: Widget.Box({
       vertical: true,
       children: [
@@ -62,18 +64,18 @@ export default () => {
     }),
   });
 
-  const revealer_icon = Variable("pan-down-symbolic");
-
   const reveal_button = Widget.Button({
     class_name: "show-tray-button",
     tooltip_text: "Show system tray",
     on_clicked: () => {
-      revealer.reveal_child = !revealer.reveal_child;
-      revealer_icon.value = revealer.reveal_child
-        ? "pan-up-symbolic"
-        : "pan-down-symbolic";
+      globalThis.systray_visible.value = !globalThis.systray_visible.value;
     },
-    child: Widget.Icon({ icon: revealer_icon.bind(), size: 20 }),
+    child: Widget.Icon({
+      icon: globalThis.systray_visible
+        .bind()
+        .as((v: number) => `pan-${v ? "up" : "down"}-symbolic`),
+      size: 20,
+    }),
   });
 
   return Widget.Box({
