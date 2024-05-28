@@ -1,7 +1,6 @@
 import Time from "./items/time";
 import Workspaces from "./items/workspaces";
 import Tray from "./items/tray";
-import Idle from "./items/idle";
 import Battery from "./items/battery";
 import Power from "./items/power.ts";
 
@@ -9,7 +8,6 @@ export default (monitor: number) => {
   const start = [
     //
     Power(monitor),
-    Idle(),
     Tray(),
   ];
   const center = [

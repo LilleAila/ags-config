@@ -1,4 +1,5 @@
 import Gdk from "gi://Gdk";
+import Idle from "./idle";
 const systemtray = await Service.import("systemtray");
 
 const SysTrayItem = (item) =>
@@ -44,15 +45,21 @@ export default () => {
     transitionDuration: 250,
     reveal_child: false,
     child: Widget.Box({
-      class_name: "tray",
       vertical: true,
-      hexpand: true,
-      hpack: "center",
-    }).bind("children", systemtray, "items", (i) =>
-      i
-        // .filter(({ id }) => !ignore.value.includes(id))
-        .map(SysTrayItem),
-    ),
+      children: [
+        Idle(),
+        Widget.Box({
+          class_name: "tray",
+          vertical: true,
+          hexpand: true,
+          hpack: "center",
+        }).bind("children", systemtray, "items", (i) =>
+          i
+            // .filter(({ id }) => !ignore.value.includes(id))
+            .map(SysTrayItem),
+        ),
+      ],
+    }),
   });
 
   const revealer_icon = Variable("pan-down-symbolic");
