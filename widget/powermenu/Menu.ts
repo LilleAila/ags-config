@@ -29,8 +29,20 @@ export default (monitor: number = 0) => {
   return Widget.Revealer({
     class_name: "powermenu-wrapper",
     transition: "slide_right",
-    transitionDuration: 250,
-    reveal_child: globalThis[`show_powermenu${monitor}`].bind(),
+    transitionDuration: 150,
+    //reveal_child: globalThis[`show_powermenu${monitor}`].bind(),
+    reveal_child: false,
+    setup: (self) => {
+      self.hook(
+        App,
+        (self, windowName, visible) => {
+          if ((windowName = `powermenu${monitor}`)) {
+            self.reveal_child = visible;
+          }
+        },
+        "window-toggled",
+      );
+    },
     child: Widget.Box({
       class_name: "powermenu-menu",
       children: buttons,

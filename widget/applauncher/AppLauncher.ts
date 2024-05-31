@@ -1,9 +1,14 @@
 const { query } = await Service.import("applications");
 
 const AppLauncher = () =>
-  Widget.Box({
-    vertical: true,
-    class_name: "applauncher",
+  Widget.Revealer({
+    transition: "slide_right",
+    transitionDuration: 250,
+    reveal_child: true,
+    child: Widget.Box({
+      vertical: true,
+      class_name: "applauncher",
+    }),
   });
 
 export default (monitor: number = 0) =>
@@ -13,5 +18,5 @@ export default (monitor: number = 0) =>
     class_name: "applauncher",
     visible: false,
     //keymode: "exclusive",
-    child: AppLauncher(),
+    child: Widget.Box({ child: AppLauncher() }),
   });
