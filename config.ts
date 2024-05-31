@@ -6,9 +6,6 @@ import { forMonitors } from "lib/utils";
 
 App.config({
   style: App.configDir + "/style.css",
-  closeWindowDelay: {
-    powermenu0: 150,
-  },
   windows: [
     ...forMonitors(Bar),
     ...forMonitors(OSD),

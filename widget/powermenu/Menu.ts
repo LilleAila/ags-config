@@ -25,7 +25,12 @@ const buttons = [
 ];
 
 export default (monitor: number = 0) => {
-  globalThis[`show_powermenu${monitor}`] = Variable(false);
+  App.config({
+    closeWindowDelay: {
+      [`powermenu${monitor}`]: 150,
+    },
+  });
+  //globalThis[`show_powermenu${monitor}`] = Variable(false);
   return Widget.Revealer({
     class_name: "powermenu-wrapper",
     transition: "slide_right",
