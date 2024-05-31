@@ -24,18 +24,19 @@ const buttons = [
   Button("application-exit-symbolic", logout, "Log out"),
 ];
 
-export default () =>
-  // Hyprland layerrules instead
-  //Widget.Revealer({
-  //  class_name: "powermenu-wrapper",
-  //  transition: "slide_right",
-  //  transitionDuration: 250,
-  //  reveal_child: true,
-  Widget.Box({
-    class_name: "powermenu-menu",
-    children: buttons,
-    vertical: true,
-    hexpand: false,
-    vexpand: false,
+export default (monitor: number = 0) => {
+  globalThis[`show_powermenu${monitor}`] = Variable(false);
+  return Widget.Revealer({
+    class_name: "powermenu-wrapper",
+    transition: "slide_right",
+    transitionDuration: 250,
+    reveal_child: globalThis[`show_powermenu${monitor}`].bind(),
+    child: Widget.Box({
+      class_name: "powermenu-menu",
+      children: buttons,
+      vertical: true,
+      hexpand: false,
+      vexpand: false,
+    }),
   });
-//});
+};

@@ -7,11 +7,12 @@ export default (monitor: number = 0) =>
     name: `powermenu${monitor}`,
     anchor: ["top", "left"],
     layer: "top",
-    visible: false,
+    //visible: false,
     child: Widget.Box({
+      css: "padding: 1px;",
       vertical: true,
       vpack: "start",
       hpack: "start",
-      children: [Menu()],
+      children: [Menu(monitor)],
     }),
   });
