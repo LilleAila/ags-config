@@ -21,4 +21,8 @@
   &:hover {
     background-color: $bg2;
   }
+
+  &:first-child {
+    background-color: $bg2;
+  }
 }
