@@ -24,18 +24,11 @@ const buttons = [
   Button("application-exit-symbolic", logout, "Log out"),
 ];
 
-export default (monitor: number = 0) => {
-  App.config({
-    closeWindowDelay: {
-      [`powermenu${monitor}`]: 150,
-    },
-  });
-  //globalThis[`show_powermenu${monitor}`] = Variable(false);
-  return Widget.Revealer({
+export default (monitor: number = 0) =>
+  Widget.Revealer({
     class_name: "powermenu-wrapper",
     transition: "slide_right",
     transitionDuration: 150,
-    //reveal_child: globalThis[`show_powermenu${monitor}`].bind(),
     reveal_child: false,
     setup: (self) => {
       self.hook(
@@ -56,4 +49,3 @@ export default (monitor: number = 0) => {
       vexpand: false,
     }),
   });
-};

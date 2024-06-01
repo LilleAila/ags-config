@@ -1,8 +1,13 @@
 import Menu from "./Menu.ts";
 import { CloseOnClickAway } from "lib/widgets";
 
-export default (monitor: number = 0) =>
-  Widget.Window({
+export default (monitor: number = 0) => {
+  App.config({
+    closeWindowDelay: {
+      [`powermenu${monitor}`]: 150,
+    },
+  });
+  return Widget.Window({
     monitor: monitor,
     class_name: "powermenu",
     name: `powermenu${monitor}`,
@@ -21,3 +26,4 @@ export default (monitor: number = 0) =>
       "left-top",
     ),
   });
+};
