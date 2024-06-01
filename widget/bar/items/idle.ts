@@ -13,10 +13,11 @@ export default () =>
   Widget.Box({
     class_name: "idle-inhibit",
     vpack: "center",
+    hpack: "center",
     hexpand: true,
     tooltip_text: tooltip.bind(),
     child: Widget.Button({
-      //hexpand: false,
+      hexpand: false,
       vexpand: false,
       class_name: "idle-button",
       on_clicked: toggle,

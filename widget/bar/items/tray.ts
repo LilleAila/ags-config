@@ -4,8 +4,9 @@ const systemtray = await Service.import("systemtray");
 
 globalThis.systray_visible = Variable(false);
 
-const SysTrayItem = (item) =>
+const SysTrayItem = (item: any) =>
   Widget.Button({
+    hpack: "center",
     class_name: "tray-item",
     child: Widget.Icon({ icon: item.bind("icon") }),
     tooltip_markup: item.bind("tooltip_markup"),
@@ -67,6 +68,9 @@ export default () => {
   const reveal_button = Widget.Button({
     class_name: "show-tray-button",
     tooltip_text: "Show system tray",
+    hexpand: false,
+    vexpand: false,
+    hpack: "center",
     on_clicked: () => {
       globalThis.systray_visible.value = !globalThis.systray_visible.value;
     },

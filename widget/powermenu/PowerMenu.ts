@@ -16,7 +16,7 @@ export default (monitor: number = 0) =>
       children: [
         Widget.Box({
           hexpand: true,
-          vexpand: true,
+          vexpand: false,
           vertical: false,
           children: [
             Widget.Box({
