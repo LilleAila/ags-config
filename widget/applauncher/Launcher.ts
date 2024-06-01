@@ -1,3 +1,4 @@
+// TODO: rewrite something like this: https://github.com/SimonBrandner/dotfiles/blob/main/config/ags/app_launcher/AppLauncher.ts
 const { query } = await Service.import("applications");
 
 export default (windowName: string) => {
@@ -31,6 +32,7 @@ export default (windowName: string) => {
 
   const list = Widget.Box({
     vertical: true,
+    vpack: "start",
     class_name: "app-list",
     children: applications.bind(),
   });
@@ -41,7 +43,7 @@ export default (windowName: string) => {
 
   const entry = Widget.Entry({
     hexpand: false,
-    vexpand: true,
+    vexpand: false,
     class_name: "app-entry",
 
     on_accept: () => {
@@ -62,7 +64,7 @@ export default (windowName: string) => {
     vertical: true,
     class_name: "applauncher",
     children: [
-      //entry,
+      entry,
       Widget.Scrollable({
         hscroll: "never",
         class_name: "app-scroll",
