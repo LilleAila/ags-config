@@ -16,19 +16,20 @@ const poweroff = () => Utils.exec("systemctl poweroff");
 const reboot = () => Utils.exec("systemctl reboot");
 const logout = () => Utils.exec("hyprctl dispatch exit");
 
-const buttons = [
-  Button("lock-symbolic", lock, "Lock"),
-  Button("system-suspend-symbolic", suspend, "Suspend"),
-  Button("system-shutdown-symbolic", poweroff, "Power off"),
-  Button("system-reboot-symbolic", reboot, "Reboot"),
-  Button("application-exit-symbolic", logout, "Log out"),
-];
+export default () => {
+  const buttons = [
+    Button("lock-symbolic", lock, "Lock"),
+    Button("system-suspend-symbolic", suspend, "Suspend"),
+    Button("system-shutdown-symbolic", poweroff, "Power off"),
+    Button("system-reboot-symbolic", reboot, "Reboot"),
+    Button("application-exit-symbolic", logout, "Log out"),
+  ];
 
-export default () =>
-  Widget.Box({
+  return Widget.Box({
     class_name: "powermenu-menu",
     children: buttons,
     vertical: true,
     hexpand: false,
     vexpand: false,
   });
+};
