@@ -10,7 +10,6 @@ App.config({
     ...forMonitors(Bar),
     ...forMonitors(OSD),
     ...forMonitors(PowerMenu),
-    AppLauncher(0),
-    //
+    ...forMonitors(AppLauncher),
   ],
 });

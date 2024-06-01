@@ -2,7 +2,7 @@ const ClickSpace = (window: string) =>
   Widget.EventBox({
     hexpand: true,
     vexpand: true,
-    on_primary_click: () => App.toggleWindow(window),
+    on_primary_click: () => App.closeWindow(window),
   });
 
 export function CloseOnClickAway(window: string, content: any, layout: string) {

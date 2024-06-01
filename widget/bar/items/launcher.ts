@@ -1,16 +1,16 @@
 export default (monitor: number = 0) =>
   Widget.Box({
-    class_name: "open-powermenu",
+    class_name: "open-launcher",
     vpack: "center",
     hpack: "center",
     hexpand: true,
-    tooltip_text: "Open powermenu",
+    tooltip_text: "Open launcher",
     child: Widget.Button({
       hexpand: false,
-      onClicked: () => App.toggleWindow(`powermenu${monitor}`),
-      class_name: "powermenu-button",
+      onClicked: () => App.toggleWindow(`applauncher${monitor}`),
+      class_name: "launcher-button",
       child: Widget.Icon({
-        icon: "system-shutdown-symbolic",
+        icon: "view-grid-symbolic",
       }),
     }),
   });

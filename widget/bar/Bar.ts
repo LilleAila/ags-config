@@ -3,11 +3,13 @@ import Workspaces from "./items/workspaces";
 import Tray from "./items/tray";
 import Battery from "./items/battery";
 import Power from "./items/power.ts";
+import Launcher from "./items/launcher.ts";
 
 export default (monitor: number) => {
   const start = [
     //
     Power(monitor),
+    Launcher(monitor), // TODO: move somewhere else, maybe bottom?
     Tray(),
   ];
   const center = [
