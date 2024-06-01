@@ -9,6 +9,6 @@ export default (monitor: number = 0) =>
     Menu(),
     150,
     "slide_right",
-    { class_name: "powermenu" },
+    { class_name: "powermenu", margins: [8, 8, 8, 8] },
     { vertical: true, vpack: "start", hpack: "start" },
   );

@@ -22,6 +22,7 @@ export default (monitor: number = 0) =>
       setup: (self: any) => {
         self.keybind("Escape", () => App.closeWindow(`applauncher${monitor}`));
       },
+      margins: [8, 8, 8, 8],
     },
-    { vertical: true, vpack: "end", hpack: "start" },
+    { vertical: true, vpack: "start", hpack: "start" },
   );
