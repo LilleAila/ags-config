@@ -9,7 +9,6 @@
     devshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
-    ags.url = "github:Aylur/ags";
   };
 
   outputs = {...} @ inputs:
@@ -43,60 +42,10 @@
           ];
         };
 
-        packages = {
-          default = pkgs.stdenv.mkDerivation {
-            src = ./.;
-            name = "ags";
-
-            buildPhase =
-              /*
-              bash
-              */
-              with inputs.nix-colors.colorSchemes.gruvbox-dark-medium.palette; ''
-                mkdir -p style
-                cat << EOF > ./style/cols.scss
-                \$base00: #${base00};
-                \$base01: #${base01};
-                \$base02: #${base02};
-                \$base03: #${base03};
-                \$base04: #${base04};
-                \$base05: #${base05};
-                \$base06: #${base06};
-                \$base07: #${base07};
-                \$base08: #${base08};
-                \$base09: #${base09};
-                \$base0A: #${base0A};
-                \$base0B: #${base0B};
-                \$base0C: #${base0C};
-                \$base0D: #${base0D};
-                \$base0E: #${base0E};
-                \$base0F: #${base0F};
-                EOF
-
-                ${pkgs.sass}/bin/sass ./style.scss ./style.css
-                ${lib.getExe pkgs.esbuild} config.ts \
-                  --outfile=config.js \
-                  --bundle \
-                  --format=esm \
-                  --external:"resource://*" \
-                  --external:"gi://*"
-              '';
-
-            installPhase =
-              /*
-              bash
-              */
-              ''
-                mkdir -p $out
-                mkdir -p $out/bin
-                cp -r * $out
-
-                cat << EOF > $out/bin/ags
-                ${inputs.ags.packages.${pkgs.system}.ags}/bin/ags -c $out/config.js \$@
-                EOF
-                chmod +x $out/bin/ags
-              '';
-          };
+        packages = rec {
+          default = pkgs.callPackage ./package.nix {colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;};
+          ags-config = default;
+          ags = default;
         };
       };
     };
