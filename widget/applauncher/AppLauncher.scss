@@ -8,7 +8,17 @@
   color: $fg;
 }
 
-// .app-entry {
-//   min-width: 100px;
-//   min-height: 24px;
-// }
+.app-entry {
+  margin: 8px;
+}
+
+.app-item {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background-color 100ms linear;
+
+  &:hover {
+    background-color: $bg2;
+  }
+}

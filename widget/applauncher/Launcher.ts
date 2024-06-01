@@ -45,6 +45,7 @@ export default (windowName: string) => {
     hexpand: false,
     vexpand: false,
     class_name: "app-entry",
+    placeholder_text: "Search for an app...",
 
     on_accept: () => {
       const results = applications.value.filter((item) => item.visible);
