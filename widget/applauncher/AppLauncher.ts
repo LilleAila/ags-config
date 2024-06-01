@@ -11,7 +11,7 @@ const AppLauncher = () =>
     }),
   });
 
-export default (monitor: number = 0) =>
+export default (monitor: number = 0) => {
   Widget.Window({
     monitor: monitor,
     name: `applauncher${monitor}`,
@@ -20,3 +20,4 @@ export default (monitor: number = 0) =>
     //keymode: "exclusive",
     child: Widget.Box({ child: AppLauncher() }),
   });
+};

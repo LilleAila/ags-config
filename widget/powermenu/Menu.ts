@@ -24,28 +24,11 @@ const buttons = [
   Button("application-exit-symbolic", logout, "Log out"),
 ];
 
-export default (monitor: number = 0) =>
-  Widget.Revealer({
-    class_name: "powermenu-wrapper",
-    transition: "slide_right",
-    transitionDuration: 150,
-    reveal_child: false,
-    setup: (self) => {
-      self.hook(
-        App,
-        (self, windowName, visible) => {
-          if ((windowName = `powermenu${monitor}`)) {
-            self.reveal_child = visible;
-          }
-        },
-        "window-toggled",
-      );
-    },
-    child: Widget.Box({
-      class_name: "powermenu-menu",
-      children: buttons,
-      vertical: true,
-      hexpand: false,
-      vexpand: false,
-    }),
+export default () =>
+  Widget.Box({
+    class_name: "powermenu-menu",
+    children: buttons,
+    vertical: true,
+    hexpand: false,
+    vexpand: false,
   });
