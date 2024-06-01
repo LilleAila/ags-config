@@ -1,7 +1,11 @@
 {
   stdenv,
+  # Required to build
   sass,
   esbuild,
+  # Required to run
+  ags,
+  brightnessctl,
   # Colorscheme, passed with .override
   colorScheme,
 }:
@@ -12,6 +16,11 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     sass
     esbuild
+  ];
+
+  buildInputs = [
+    ags
+    brightnessctl
   ];
 
   buildPhase =
