@@ -1,4 +1,5 @@
 import { RevealerWindow } from "lib/widgets";
+import { closeAllPopups } from "lib/utils";
 const Button = (icon: string, click: any, tooltip: string) =>
   Widget.Button({
     class_name: "powermenu-button",
@@ -11,7 +12,10 @@ const Button = (icon: string, click: any, tooltip: string) =>
     "tooltip-text": tooltip,
   });
 
-const lock = () => Utils.exec("loginctl lock-session");
+const lock = async () => {
+  closeAllPopups();
+  await Utils.execAsync("bash -c 'sleep 0.5; loginctl lock-session'");
+};
 const suspend = () => Utils.exec("systemctl suspend");
 const poweroff = () => Utils.exec("systemctl poweroff");
 const reboot = () => Utils.exec("systemctl reboot");
