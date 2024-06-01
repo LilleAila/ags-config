@@ -57,6 +57,7 @@ export function RevealerWindow(
 ) {
   App.config({
     closeWindowDelay: {
+      ...App.closeWindowDelay,
       [name]: transitionDuration,
     },
   });
