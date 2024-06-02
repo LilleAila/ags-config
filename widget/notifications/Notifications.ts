@@ -72,23 +72,14 @@ const Notification = (n: any) => {
       attribute: { id: n.id },
       on_primary_click: n.dismiss,
     },
-    Widget.Revealer({
-      reveal_child: false,
-      transition: "slide_right",
-      transition_duration: 150,
-      // idk how to actually animatie this
-      setup: (self) => {
-        self.reveal_child = true;
+    Widget.Box(
+      {
+        class_name: `notification ${n.urgency}`,
+        vertical: true,
       },
-      child: Widget.Box(
-        {
-          class_name: `notification ${n.urgency}`,
-          vertical: true,
-        },
-        Widget.Box([icon, Widget.Box({ vertical: true }, title, body)]),
-        actions,
-      ),
-    }),
+      Widget.Box([icon, Widget.Box({ vertical: true }, title, body)]),
+      actions,
+    ),
   );
 };
 
