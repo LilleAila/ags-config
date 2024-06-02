@@ -76,6 +76,7 @@ const Notification = (n: any) => {
       reveal_child: false,
       transition: "slide_right",
       transition_duration: 150,
+      // idk how to actually animatie this
       setup: (self) => {
         self.reveal_child = true;
       },

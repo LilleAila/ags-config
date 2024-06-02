@@ -1,15 +1,17 @@
 {
   stdenv,
+  lib,
   # Required to build
   sass,
   esbuild,
   # Required to run
+  runtimeShell,
   ags,
   brightnessctl,
   # Colorscheme, passed with .override
   colorScheme,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   src = ./.;
   name = "ags-config";
 
@@ -67,6 +69,8 @@ stdenv.mkDerivation {
       cp -r * $out
 
       cat << EOF > $out/bin/ags-config
+      #!${runtimeShell}
+      export PATH="\$PATH:${lib.makeBinPath buildInputs}"
       ags -c $out/config.js
       EOF
       chmod +x $out/bin/ags-config
