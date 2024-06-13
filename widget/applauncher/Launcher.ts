@@ -1,6 +1,14 @@
 // TODO: rewrite something like this: https://github.com/SimonBrandner/dotfiles/blob/main/config/ags/app_launcher/AppLauncher.ts
 const { query } = await Service.import("applications");
 
+// Simple fuzzy search
+const matchesTerm = (name: string, term: string) => {
+  const regexString = term.split("").join(".*?");
+  const regex = new RegExp(regexString, "i");
+
+  return regex.test(name);
+};
+
 export default (windowName: string) => {
   const AppItem = (app: any) =>
     Widget.Button({
@@ -57,7 +65,7 @@ export default (windowName: string) => {
 
     on_change: ({ text }) =>
       applications.value.forEach((item) => {
-        item.visible = item.attribute.app.match(text ?? "");
+        item.visible = matchesTerm(item.attribute.app.name, text ?? "");
       }),
   });
 
