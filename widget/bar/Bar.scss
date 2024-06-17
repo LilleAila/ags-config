@@ -10,15 +10,22 @@
 
   &.bar-start {
     border-bottom-right-radius: 8px;
+    border-right: 1px solid $fg-inactive;
+    border-bottom: 1px solid $fg-inactive;
   }
 
   &.bar-center {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    border-top: 1px solid $fg-inactive;
+    border-right: 1px solid $fg-inactive;
+    border-bottom: 1px solid $fg-inactive;
   }
 
   &.bar-end {
     border-top-right-radius: 8px;
+    border-top: 1px solid $fg-inactive;
+    border-right: 1px solid $fg-inactive;
   }
 }
 
@@ -139,8 +146,8 @@ tooltip {
 
 // Battery
 .battery-progress {
-  min-width: $bar-size;
-  min-height: $bar-size;
+  min-width: 28px;
+  min-height: 28px;
   font-size: 5px;
   background-color: $bg2;
 
