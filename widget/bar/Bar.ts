@@ -4,6 +4,7 @@ import Tray from "./items/tray";
 import Battery from "./items/battery";
 import Power from "./items/power.ts";
 import Launcher from "./items/launcher.ts";
+import Network from "./items/network.ts";
 
 export default (monitor: number) => {
   const start = [
@@ -18,17 +19,24 @@ export default (monitor: number) => {
   ];
   const end = [
     //
-    Widget.Box({
-      class_name: "bar-box bar-center",
-      hpack: "center",
-      vertical: true,
-      children: [Battery(), Time()],
-    }),
+    //Widget.Box({
+    //  class_name: "bar-box bar-center",
+    //  hpack: "center",
+    //  vertical: true,
+    //  children: [
+    //    //
+    //    Network(),
+    //  ],
+    //}),
     Widget.Box({
       class_name: "bar-box bar-end",
       hpack: "center",
       vertical: true,
-      children: [Battery(), Time()],
+      children: [
+        //
+        Battery(),
+        Time(),
+      ],
     }),
   ];
 
