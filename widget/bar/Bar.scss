@@ -1,31 +1,36 @@
 // Bar stuff
 .bar-wrapper {
-  background-color: rgba($bg, 0.5);
+  // background-color: rgba($bg, 0.5);
+  background-color: transparent;
 }
 
 .bar-box {
   min-width: $bar-size;
-  background-color: $bg;
-  padding: 8px 0;
+  // background-color: $bg;
+  background-color: rgba($bg, 0.6);
+  padding: 6px 2px;
+
+  $bcol: $fg-inactive;
+  $bradius: 8px;
 
   &.bar-start {
-    border-bottom-right-radius: 8px;
-    border-right: 1px solid $fg-inactive;
-    border-bottom: 1px solid $fg-inactive;
+    border-bottom-right-radius: $bradius;
+    border-right: 1px solid $bcol;
+    border-bottom: 1px solid $bcol;
   }
 
   &.bar-center {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top: 1px solid $fg-inactive;
-    border-right: 1px solid $fg-inactive;
-    border-bottom: 1px solid $fg-inactive;
+    border-top-right-radius: $bradius;
+    border-bottom-right-radius: $bradius;
+    border-top: 1px solid $bcol;
+    border-right: 1px solid $bcol;
+    border-bottom: 1px solid $bcol;
   }
 
   &.bar-end {
-    border-top-right-radius: 8px;
-    border-top: 1px solid $fg-inactive;
-    border-right: 1px solid $fg-inactive;
+    border-top-right-radius: $bradius;
+    border-top: 1px solid $bcol;
+    border-right: 1px solid $bcol;
   }
 }
 

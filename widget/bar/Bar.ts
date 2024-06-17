@@ -18,9 +18,20 @@ export default (monitor: number) => {
   ];
   const end = [
     //
-    Battery(),
-    Time(),
+    Widget.Box({
+      class_name: "bar-box bar-center",
+      hpack: "center",
+      vertical: true,
+      children: [Battery(), Time()],
+    }),
+    Widget.Box({
+      class_name: "bar-box bar-end",
+      hpack: "center",
+      vertical: true,
+      children: [Battery(), Time()],
+    }),
   ];
+
   return Widget.Window({
     monitor: monitor,
     class_name: "bar",
@@ -39,6 +50,7 @@ export default (monitor: number) => {
         hexpand: false,
         vertical: true,
         children: start,
+        //spacing: 12,
       }),
       centerWidget: Widget.Box({
         class_name: "bar-box bar-center",
@@ -47,14 +59,17 @@ export default (monitor: number) => {
         hexpand: false,
         vertical: true,
         children: center,
+        //spacing: 12,
       }),
       endWidget: Widget.Box({
-        class_name: "bar-box bar-end",
+        //class_name: "bar-box bar-end",
         vpack: "end",
         hpack: "center",
         hexpand: false,
+        vexpand: true,
         vertical: true,
         children: end,
+        spacing: 12,
       }),
     }),
   });
