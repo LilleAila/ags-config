@@ -19,15 +19,17 @@ export default (monitor: number) => {
   ];
   const end = [
     //
-    //Widget.Box({
-    //  class_name: "bar-box bar-center",
-    //  hpack: "center",
-    //  vertical: true,
-    //  children: [
-    //    //
-    //    Network(),
-    //  ],
-    //}),
+    /*
+    Widget.Box({
+      class_name: "bar-box bar-center",
+      hpack: "center",
+      vertical: true,
+      children: [
+        //
+        Network(),
+      ],
+    }),
+    */
     Widget.Box({
       class_name: "bar-box bar-end",
       hpack: "center",

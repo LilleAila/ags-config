@@ -1,5 +1,5 @@
 // TODO: rewrite something like this: https://github.com/SimonBrandner/dotfiles/blob/main/config/ags/app_launcher/AppLauncher.ts
-const { query } = await Service.import("applications");
+const applications = await Service.import("applications");
 
 // Simple fuzzy search
 const matchesTerm = (name: string, term: string) => {
@@ -36,17 +36,18 @@ export default (windowName: string) => {
       }),
     });
 
-  let applications = Variable(query("").map(AppItem));
+  let apps = Variable(applications.query("").map(AppItem));
 
   const list = Widget.Box({
     vertical: true,
     vpack: "start",
     class_name: "app-list",
-    children: applications.bind(),
+    children: apps.bind(),
   });
 
   function repopulate() {
-    applications.value = query("").map(AppItem);
+    applications.reload();
+    apps.value = applications.query("").map(AppItem);
   }
 
   const entry = Widget.Entry({
@@ -56,7 +57,7 @@ export default (windowName: string) => {
     placeholder_text: "Search for an app...",
 
     on_accept: () => {
-      const results = applications.value.filter((item) => item.visible);
+      const results = apps.value.filter((item) => item.visible);
       if (results[0]) {
         App.toggleWindow(windowName);
         results[0].attribute.app.launch();
@@ -64,7 +65,7 @@ export default (windowName: string) => {
     },
 
     on_change: ({ text }) =>
-      applications.value.forEach((item) => {
+      apps.value.forEach((item) => {
         item.visible = matchesTerm(item.attribute.app.name, text ?? "");
       }),
   });
