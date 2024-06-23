@@ -18,6 +18,10 @@
   border-radius: 8px;
   transition: background-color 100ms linear;
 
+  .app-title {
+    margin-left: 8px;
+  }
+
   &:hover {
     background-color: $bg2;
   }
